@@ -34,8 +34,15 @@ public class CILabTest {
     }
     @Test
     public void detectCapitalUseTest2() {
-        myString.setString("GOOGLE");
-        assertTrue(myString.detectCapitalUse());
+        myString.setString("gOOGLE");
+        assertFalse(myString.detectCapitalUse());
+    }
+
+    // check for special symbol
+    @Test
+    public void detectCapitalUseTest3() {
+        myString.setString("GO&GLE");
+        assertFalse(myString.detectCapitalUse());
     }
 
 }

@@ -6,7 +6,7 @@ public class CILab implements CILabInterface {
 
     @Override
         public String getString() {
-            return myString;
+        return myString;
         }
 
         @Override
@@ -26,23 +26,26 @@ public class CILab implements CILabInterface {
             if (myString == null) return false;
             int capLetters = 0;
             int littleLetters = 0;
+
            if (Character.isUpperCase(myString.charAt(0))) {
                capLetters = 1;
                for (int i = myString.length() - 1; i > 0; i--) {
-                   if (Character.isLetter(myString.charAt(0)) && Character.isUpperCase(myString.charAt(i))) {
+                   if (Character.isUpperCase(myString.charAt(i))) {
                        capLetters++;
                    }
-//                   else {
-//                       break;
-//                   }
                }
-           } else {
-               littleLetters++;
+           } else if (Character.isLowerCase(myString.charAt(0))) {
+               littleLetters = 1;
+               for (int i = myString.length() - 1; i > 0; i--) {
+                   if (Character.isLowerCase(myString.charAt(i))) {
+                       littleLetters++;
+                   }
+               }
            }
 
-           if (capLetters == 1 || capLetters == myString.length())
-               return true;
-           else if (littleLetters >= myString.length() - 1)
+           if (capLetters == 1 && littleLetters == myString.length() - 1
+                   || capLetters == myString.length()
+                   || littleLetters == myString.length())
                return true;
            else
                return false;
